@@ -23,7 +23,7 @@ export default async function LocaleLayout({
         <html lang={locale}>
         <body>
         {process.env.NEXT_PUBLIC_USE_NEXT_INTL === "true" ? (
-            <NextIntlClientProvider messages={messages}>
+            <NextIntlClientProvider locale={locale} messages={messages}>
                 {children}
             </NextIntlClientProvider>
         ) : children}
