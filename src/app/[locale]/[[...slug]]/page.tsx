@@ -1,5 +1,12 @@
-export default async function Page(props: { params: Promise<{ slug: string }>;}) {
+import {setRequestLocale} from "next-intl/server";
+
+export default async function Page(props: { params: Promise<{ locale: string; slug: string }>;}) {
     const params = await props.params;
+
+    if (process.env.NEXT_PUBLIC_USE_NEXT_INTL === "true") {
+        setRequestLocale(params.locale);
+
+    }
 return (<h1>
     {params.slug}
 </h1>)

@@ -1,5 +1,5 @@
 import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
+import {getMessages, setRequestLocale} from 'next-intl/server';
 
 export default async function LocaleLayout({
                                                children,
@@ -12,7 +12,12 @@ export default async function LocaleLayout({
 
     // Providing all messages to the client
     // side is the easiest way to get started
-    const messages = process.env.NEXT_PUBLIC_USE_NEXT_INTL === "true"? await getMessages() : {};
+    let messages = {};
+
+    if (process.env.NEXT_PUBLIC_USE_NEXT_INTL === "true") {
+        messages = await getMessages()
+        setRequestLocale(locale);
+    }
 
     return (
         <html lang={locale}>
