@@ -32,3 +32,10 @@ export default async function LocaleLayout({
         </html>
     );
 }
+
+export async function generateStaticParams() {
+    return Promise.resolve([
+        { locale: "en" },
+        { locale: "de" },
+    ])
+}

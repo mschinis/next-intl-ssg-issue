@@ -17,3 +17,13 @@ export default async function LocaleLayout(props: {
         {children}
     </div>;
 }
+
+export async function generateStaticParams() {
+    return Promise.resolve([
+        { locale: "en", slug: ["a"] },
+        { locale: "en", slug: ["b"] },
+
+        { locale: "de", slug: [] },
+        { locale: "de", slug: ["c"] },
+    ])
+}

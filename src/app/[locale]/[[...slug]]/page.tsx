@@ -16,10 +16,10 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
     return Promise.resolve([
-        { locale: "en-gb", slug: ["a"] },
-        { locale: "en-gb", slug: ["b"] },
+        { locale: "en", slug: ["a"] },
+        { locale: "en", slug: ["b"] },
 
-        { locale: "en-gr", slug: [] },
-        { locale: "en-gr", slug: ["c"] },
+        { locale: "de", slug: [] },
+        { locale: "de", slug: ["c"] },
     ])
 }
