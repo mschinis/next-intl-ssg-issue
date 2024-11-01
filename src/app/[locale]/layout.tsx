@@ -9,15 +9,11 @@ export default async function LocaleLayout({
 }) {
     const locale = (await params).locale
 
-    // Providing all messages to the client
-    // side is the easiest way to get started
-    let messages = {};
-
     return (
         <html lang={locale}>
-        <body>
-        {children}
-        </body>
+            <body>
+                {children}
+            </body>
         </html>
     );
 }
