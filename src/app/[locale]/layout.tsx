@@ -1,5 +1,4 @@
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages, setRequestLocale} from 'next-intl/server';
+export const dynamicParams = false;
 
 export default async function LocaleLayout({
                                                children,
@@ -10,25 +9,11 @@ export default async function LocaleLayout({
 }) {
     const locale = (await params).locale
 
-    // Providing all messages to the client
-    // side is the easiest way to get started
-    let messages = {};
-
-    if (process.env.NEXT_PUBLIC_USE_NEXT_INTL === "true") {
-        messages = await getMessages()
-        setRequestLocale(locale);
-    }
-
     return (
         <html lang={locale}>
-        <body>
-        {process.env.NEXT_PUBLIC_USE_NEXT_INTL === "true" ? (
-            <NextIntlClientProvider locale={locale} messages={messages}>
+            <body>
                 {children}
-            </NextIntlClientProvider>
-        ) : children}
-
-        </body>
+            </body>
         </html>
     );
 }
